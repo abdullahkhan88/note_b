@@ -25,7 +25,7 @@ const getNote = async (req, res) => {
 
 const getNoteall = async (req, res) => {
     try {
-        const note = await NoteModel.find();
+        const note = await NoteModel.find().sort({createdAt:-1});
         if (!note) return res.status(404).json({ message: "Note not found" });
         res.json(note);
     } catch (err) {
